@@ -25,8 +25,7 @@ class PostFeedController extends Controller
      */
     public function username($username): Response
     {
-//        dd($username);
-        $posts = Cache::remember('feed-posts-users', now()->addMinutes(),
+        $posts = Cache::remember('feed-posts-users' . $username, now()->addMinutes(),
             fn() => Post::latest()
                 ->whereAuthorId($username)
                 ->limit(20)
