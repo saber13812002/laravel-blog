@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PostController@index')->name('home');
+Route::get('/{username}', 'PostController@username')->name('home.username');
 Route::get('/posts/feed', 'PostFeedController@index')->name('posts.feed');
+Route::get('/posts/feed/{username}', 'PostFeedController@username')->name('posts.feed.username');
 Route::resource('posts', 'PostController')->only('show');
 Route::resource('users', 'UserController')->only('show');
 
