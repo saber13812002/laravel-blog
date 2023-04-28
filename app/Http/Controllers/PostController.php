@@ -14,16 +14,20 @@ class PostController extends Controller
      */
     public function index(Request $request): View
     {
+        $posts = Post::search($request->input('q'))
+            ->with('author', 'likes')
+            ->withCount('comments', 'thumbnail', 'likes')
+            ->latest()
+            ->paginate(20);
+
+        $comments = Comment::search($request->input('qc'))
+            ->with('post', 'author')
+            ->latest()
+            ->paginate(20);
+//        dd($comments);
         return view('posts.index', [
-            'posts' => Post::search($request->input('q'))
-                ->with('author', 'likes')
-                ->withCount('comments', 'thumbnail', 'likes')
-                ->latest()
-                ->paginate(20),
-            'comments' => Comment::search($request->input('qc'))
-                ->with('post', 'author')
-                ->latest()
-                ->paginate(20),
+            'posts' => $posts,
+            'comments' => $comments,
             'rss' => null
         ]);
     }
