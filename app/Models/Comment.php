@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Comment extends Model
 {
@@ -18,10 +19,10 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-      'author_id',
-      'post_id',
-      'content',
-      'posted_at'
+        'author_id',
+        'post_id',
+        'content',
+        'posted_at'
     ];
 
     /**
@@ -33,13 +34,24 @@ class Comment extends Model
         'posted_at'
     ];
 
+
+    /**
+     * Scope a query to search posts
+     */
+    public function scopeSearch(Builder $query, ?string $search)
+    {
+        if ($search) {
+            return $query->where('content', 'LIKE', "%{$search}%");
+        }
+    }
+
     /**
      * Scope a query to only include comments posted last week.
      */
     public function scopeLastWeek(Builder $query): Builder
     {
         return $query->whereBetween('posted_at', [carbon('1 week ago'), now()])
-                     ->latest();
+            ->latest();
     }
 
     /**
@@ -64,5 +76,14 @@ class Comment extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
+    }
+
+
+    /**
+     * return the excerpt of the post content
+     */
+    public function excerpt(int $length = 50): string
+    {
+        return Str::limit($this->content, $length) . '...';
     }
 }

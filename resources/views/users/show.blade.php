@@ -14,6 +14,12 @@
                         </a>
                     </div>
 
+                    <div class="p-2" style="font-size: 2rem;">
+                        <a href="{{ route('comments.feed').'/'.$rss }}" data-turbolinks="false">
+                            <i class="fa fa-rss" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
                     <div class="card-text row mt-3">
                         <div class="col-md-4">
                             <span class="text-muted d-block">@lang('comments.comments')</span>

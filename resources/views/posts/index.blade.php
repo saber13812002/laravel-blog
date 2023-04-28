@@ -21,4 +21,5 @@
   </div>
 
   @include ('posts/_list')
+{{--  @include ('comments/_list')--}}
 @endsection

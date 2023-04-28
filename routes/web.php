@@ -23,6 +23,9 @@ Route::get('/posts/feed', [PostFeedController::class, 'index'])->name('posts.fee
 Route::get('/posts/feed/{user_id}', [PostFeedController::class, 'userId'])->name('posts.feed.user_id');
 Route::get('/posts/feed/username/{username}', [PostFeedController::class, 'username'])->name('posts.feed.username');
 
+Route::get('/comments/feed', [PostFeedController::class, 'comments'])->name('comments.feed');
+Route::get('/comments/feed/{user_id}', [PostFeedController::class, 'commentsUserId'])->name('comments.feed.user_id');
+
 Route::resource('posts', 'PostController')->only('show');
 Route::resource('users', 'UserController')->only('show');
 

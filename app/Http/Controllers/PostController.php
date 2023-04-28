@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -17,6 +18,10 @@ class PostController extends Controller
             'posts' => Post::search($request->input('q'))
                 ->with('author', 'likes')
                 ->withCount('comments', 'thumbnail', 'likes')
+                ->latest()
+                ->paginate(20),
+            'comments' => Comment::search($request->input('qc'))
+                ->with('post', 'author')
                 ->latest()
                 ->paginate(20),
             'rss' => null
