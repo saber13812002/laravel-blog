@@ -74,17 +74,48 @@ Now you can access the application via [http://localhost:8000](http://localhost:
 
 **There is no need to run `php artisan serve`. PHP is already running in the dedicated virtual machine.**
 
-## install extensions:
+## saber local installation
 
+### 1- install extensions:
+
+first verify that extension url in php.ini set and configure correctly:
+```
+extension_dir = "ext"
+```
+uncomment:
+ - curl
+ - fileinfo
  - gd
  - mbstring
  - exif
  - zip
+ - mysqli
+ - openssl
+
+add this:
+ - php_pdo_mysql.dll
 ```
 extension=gd
 extension=mbstring
 extension=exif
 ```
+### 2- config file
+
+ - create db
+ - composer i
+ - composer u
+ - env file. those key in .env.example that comment
+ - php artisan migrate
+ - php artisan storage:link
+ - php artisan serve
+
+### 3- test:
+ - create user
+ - register user and check email to activate user by mailtrap
+ - make this user admin by role-user table add role id 2
+ - goto dashboard
+ - upload image
+ - create post with this image
 
 ## Before starting
 You need to run the migrations with the seeds :
