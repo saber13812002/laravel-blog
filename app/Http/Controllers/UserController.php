@@ -17,6 +17,7 @@ class UserController extends Controller
     public function show(Request $request, User $user): View
     {
         return view('users.show', [
+            'rss' => $user->id,
             'user' => $user,
             'posts_count' => $user->posts()->count(),
             'comments_count' => $user->comments()->count(),
