@@ -10,7 +10,7 @@
                 <a href="https://github.com/saber13812002/laravel-blog" target="_blank"
                    class="btn btn-outline-secondary mt-1"><i class="fa fa-github" aria-hidden="true"></i> <?php __('Fork me on') ?>
                     <?php __('GitHub') ?></a>
-                <a href="https://twitter.com/guillaumebriday" target="_blank" class="btn btn-outline-secondary mt-1"><i
+                <a href="https://twitter.com/saber13812002" target="_blank" class="btn btn-outline-secondary mt-1"><i
                         class="fa fa-twitter" aria-hidden="true"></i> <?php __('Say Hi on Twitter !') ?></a>
             </li>
 

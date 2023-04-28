@@ -1,7 +1,7 @@
 # Laravel 8.0 blog
 
-[![Build Status](https://travis-ci.org/guillaumebriday/laravel-blog.svg?branch=master)](https://travis-ci.org/guillaumebriday/laravel-blog)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/guillaumebriday)
+[![Build Status](https://pardisania.ir/saber13812002/laravel-blog.svg?branch=master)](https://travis-ci.org/guillaumebriday/laravel-blog)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/saber13812002)
 
 The purpose of this repository is to show good development practices on [Laravel](http://laravel.com/) as well as to present cases of use of the framework's features like:
 
