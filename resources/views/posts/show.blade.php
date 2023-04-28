@@ -18,7 +18,7 @@
         <div class="mb-3">
             <small v-pre
                    class="text-muted"> نوشته شده توسط: {{ link_to_route('users.show', $post->author->fullname, $post->author) }}</small>,
-            <small class="text-muted"> در تاریخ: {{ verta($post->posted_at)->formatDifference() }}</small>
+            <small class="text-muted"> در تاریخ: {{ humanize_date($post->posted_at) }}</small>
         </div>
 
         <div v-pre class="post-content">

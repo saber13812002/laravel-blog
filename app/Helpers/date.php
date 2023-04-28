@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 
 /**
  * Return a Carbon instance.
@@ -13,7 +14,14 @@ function carbon(string $parseString = '', string $tz = null): Carbon
 /**
  * Return a formatted Carbon date.
  */
-function humanize_date(Carbon $date, string $format = 'd F Y, H:i'): string
+function humanize_date(Carbon $date, string $format = null): string
 {
-    return $date->format($format);
+    if (App::getLocale() == 'fa') {
+        if ($format)
+            return verta()->formatWord('l dS F');
+        else
+            return verta($date)->formatDifference();
+    } else {
+        return $date->format($format);
+    }
 }

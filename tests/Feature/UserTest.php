@@ -13,7 +13,7 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testProfil()
+    public function testProfile()
     {
         $user = $this->user();
         $comment = Comment::factory()->create(['author_id' => $user->id]);

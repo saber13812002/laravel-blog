@@ -1,7 +1,12 @@
 {
     "name": "saber13812002/laravel-blog",
     "description": "Laravel 10.0 blog.",
-    "keywords": ["framework", "laravel", "blog", "example"],
+    "keywords": [
+        "framework",
+        "laravel",
+        "blog",
+        "example"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -23,7 +28,7 @@
         "spatie/laravel-backup": "^6.11.4",
         "spatie/laravel-medialibrary": "^9.7",
         "tio/laravel": "^1.23",
-      "ext-http": "*"
+        "ext-http": "*"
     },
     "require-dev": {
         "filp/whoops": "^2.7.3",
@@ -32,7 +37,8 @@
         "laravel/homestead": "^11.2.2",
         "laravel/telescope": "^4.1.0",
         "mockery/mockery": "^1.4.2",
-        "phpunit/phpunit": "^9.4.0"
+        "phpunit/phpunit": "^9.4.0",
+        "fakerphp/faker": "^1.9.1"
     },
     "autoload": {
         "psr-4": {

@@ -10,7 +10,7 @@ class DateHelperTest extends TestCase
     {
         $date = now();
 
-        $this->assertEquals($date->format('d F Y, H:i'), humanize_date($date));
+        $this->assertEquals($date->format('d F Y, H:i'), humanize_date($date, 'd F Y, H:i'));
     }
 
     public function testHumanizeDateFormat()
