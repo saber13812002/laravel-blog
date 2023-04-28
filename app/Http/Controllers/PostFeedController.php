@@ -23,6 +23,22 @@ class PostFeedController extends Controller
     /**
      * Show the rss feed of posts.
      */
+    public function userId($userId): Response
+    {
+        $posts = Cache::remember('feed-posts-users' . $userId, now()->addMinutes(),
+            fn() => Post::latest()
+                ->whereAuthorId($userId)
+                ->limit(20)
+                ->get());
+
+        return response()->view('posts_feed.index', [
+            'posts' => $posts
+        ], 200)->header('Content-Type', 'text/xml');
+    }
+
+    /**
+     * Show the rss feed of posts.
+     */
     public function username($username): Response
     {
         $posts = Cache::remember('feed-posts-users' . $username, now()->addMinutes(),

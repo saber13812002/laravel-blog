@@ -18,7 +18,24 @@ class PostController extends Controller
                 ->with('author', 'likes')
                 ->withCount('comments', 'thumbnail', 'likes')
                 ->latest()
-                ->paginate(20)
+                ->paginate(20),
+            'rss' => null
+        ]);
+    }
+
+    /**
+     * Show the application dashboard.
+     */
+    public function userId(Request $request, $userId): View
+    {
+        return view('posts.index', [
+            'posts' => Post::search($request->input('q'))
+                ->where('author_id', $userId)
+                ->with('author', 'likes')
+                ->withCount('comments', 'thumbnail', 'likes')
+                ->latest()
+                ->paginate(20),
+            'rss' => $userId
         ]);
     }
 
@@ -33,7 +50,8 @@ class PostController extends Controller
                 ->with('author', 'likes')
                 ->withCount('comments', 'thumbnail', 'likes')
                 ->latest()
-                ->paginate(20)
+                ->paginate(20),
+            'rss' => $username
         ]);
     }
 
