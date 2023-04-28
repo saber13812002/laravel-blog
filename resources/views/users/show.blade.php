@@ -8,7 +8,7 @@
                     <h2 v-pre class="card-title mb-0">{{ $user->name }}</h2>
                     <small class="card-subtitle mb-2 text-muted">{{ $user->email }}</small>
 
-                    <div class="p-2">
+                    <div class="p-2" style="font-size: 2rem;">
                         <a href="{{ route('posts.feed').'/'.$rss }}" data-turbolinks="false">
                             <i class="fa fa-rss" aria-hidden="true"></i>
                         </a>
