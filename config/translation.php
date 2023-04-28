@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'key' => 'ce236df79c674c36b4cce3ea3d01f2fc',
+    'key' => env('TRANSLATION_IO_TOKEN'),
     'source_locale' => 'en',
     'target_locales' => ['fr', 'fa'],
     /* Directories to scan for Gettext strings */
