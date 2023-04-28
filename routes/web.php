@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostFeedController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PostController@index')->name('home');
-Route::get('/{username}', 'PostController@username')->name('home.username');
-Route::get('/posts/feed', 'PostFeedController@index')->name('posts.feed');
-Route::get('/posts/feed/{username}', 'PostFeedController@username')->name('posts.feed.username');
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/{user_id}', [PostController::class, 'userId'])->name('home.user_id');
+Route::get('/username/{username}', [PostController::class, 'username'])->name('home.username');
+
+Route::get('/posts/feed', [PostFeedController::class, 'index'])->name('posts.feed');
+Route::get('/posts/feed/{user_id}', [PostFeedController::class, 'userId'])->name('posts.feed.user_id');
+Route::get('/posts/feed/username/{username}', [PostFeedController::class, 'username'])->name('posts.feed.username');
+
 Route::resource('posts', 'PostController')->only('show');
 Route::resource('users', 'UserController')->only('show');
 
