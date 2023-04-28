@@ -3,9 +3,10 @@
 @section('content')
     @guest
     @else
-    <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary btn-sm {{ request()->route()->named('admin.dashboard') ? 'active' : '' }}">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-    </a>
+        <a href="{{ route('admin.posts.edit', $post) }}"
+           class="btn btn-primary btn-sm {{ request()->route()->named('admin.dashboard') ? 'active' : '' }}">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
     @endguest
     <div class="bg-white p-3 post-card">
         @if ($post->hasThumbnail())
@@ -16,8 +17,8 @@
 
         <div class="mb-3">
             <small v-pre
-                   class="text-muted">{{ link_to_route('users.show', $post->author->fullname, $post->author) }}</small>,
-            <small class="text-muted">{{ humanize_date($post->posted_at) }}</small>
+                   class="text-muted"> نوشته شده توسط: {{ link_to_route('users.show', $post->author->fullname, $post->author) }}</small>,
+            <small class="text-muted"> در تاریخ: {{ verta($post->posted_at)->formatDifference() }}</small>
         </div>
 
         <div v-pre class="post-content">
