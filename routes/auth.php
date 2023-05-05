@@ -22,6 +22,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('token', 'UserTokenController@edit')->name('users.token');
         Route::match(['put', 'patch'], 'token', 'UserTokenController@update')->name('users.token.update');
+
+        Route::get('messenger', 'UserMessengerController@edit')->name('users.messenger');
+        Route::match(['put', 'patch'], 'messenger', 'UserMessengerController@update')->name('users.messenger.update');
     });
 
     Route::resource('newsletter-subscriptions', 'NewsletterSubscriptionController')->only('store');

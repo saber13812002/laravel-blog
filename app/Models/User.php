@@ -56,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeLastWeek(Builder $query): Builder
     {
         return $query->whereBetween('registered_at', [carbon('1 week ago'), now()])
-                     ->latest();
+            ->latest();
     }
 
     /**
@@ -74,7 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $query->whereHas('roles', function ($query) {
             $query->where('roles.name', Role::ROLE_ADMIN)
-                  ->orWhere('roles.name', Role::ROLE_EDITOR);
+                ->orWhere('roles.name', Role::ROLE_EDITOR);
         });
     }
 
@@ -127,6 +127,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Return the user's comments
+     */
+    public function messenger(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Messenger::class, 'user_id');
+    }
+
+    /**
      * Return the user's likes
      */
     public function likes(): HasMany
@@ -141,4 +149,17 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    public function updateMessenger($request)
+    {
+        $messenger = Messenger::whereUserId($this->id)->get()->first();
+        if ($messenger == null) {
+            $messenger = new Messenger();
+        }
+        $messenger->user_id = $this->id;
+        $messenger->bale_bot_token = $request->bale_bot_token;
+        $messenger->bale_channel_chat_id = $request->bale_channel_chat_id;
+        $messenger->save();
+    }
+
 }
