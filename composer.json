@@ -27,6 +27,7 @@
         "pusher/pusher-php-server": "^4.1.4",
         "spatie/laravel-backup": "^6.11.4",
         "spatie/laravel-medialibrary": "^9.7",
+        "saber13812002/telegram-bale-bot-php": "^101.1",
         "tio/laravel": "^1.23",
         "ext-http": "*"
     },

@@ -21,7 +21,16 @@ return [
         'roles' => 'نقش ها',
         'registered_at' => 'ثبت شده در',
         'api_token' => 'کلید ای پی ای',
-        'api_messenger' => "پیام رسان ها"
+        'api_messenger' => "پیام رسان ها",
+
+        'bale_channel_chat_id' => "شناسه گروه یا کانال بله",
+        'bale_bot_token' => "توکن روبات پیام رسان بله",
+
+        'telegram_bot_token' => "توکن روبات پیام رسان تلگرام",
+        'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
+
+        'eitaa_channel_chat_id' => "شناسه گروه یا کانال ایتا",
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا"
     ],
     'placeholder' => [
         'name' => 'اسم شما',
@@ -29,5 +38,15 @@ return [
         'current_password' => 'گذرواژه فعلی شما',
         'password' => 'رمز عبور جدید شما',
         'password_confirmation' => 'تایید رمز عبور',
+
+        'bale_channel_chat_id' => "شناسه گروه یا کانال بله",
+        'bale_bot_token' => "توکن روبات پیام رسان بله",
+
+        'telegram_bot_token' => "توکن روبات پیام رسان تلگرام",
+        'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
+
+        'eitaa_channel_chat_id' => "شناسه گروه یا کانال ایتا",
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا"
+
     ],
 ];

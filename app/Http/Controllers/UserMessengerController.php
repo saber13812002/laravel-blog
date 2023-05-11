@@ -31,6 +31,6 @@ class UserMessengerController extends Controller
 
         $user->updateMessenger($request);
 
-        return redirect()->route('users.messenger')->withSuccess(__('messengers.updated'));
+        return redirect()->route('users.messenger')->withSuccess(__('users.updated'));
     }
 }
