@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Helpers\BotHelper;
+use App\Helpers\MessengerHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostsRequest;
 use App\Http\Resources\Post as PostResource;
@@ -31,6 +32,8 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
+        MessengerHelper::send($request['content'], $request['author_id'], 'bale');
+
         $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
         return new PostResource($post);
@@ -43,9 +46,7 @@ class PostController extends Controller
     {
         $this->authorize('store', Post::class);
 
-// TODO:       $messenger = Messenger::whereUserId($request->author_id)->get()->first();
-
-//        BotHelper::sendMesseage($messenger->bale_bot_token,$messenger->bale_channel_chat_id);
+        MessengerHelper::send($request['content'], $request['author_id'], 'bale');
 
         return new PostResource(
             Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']))
