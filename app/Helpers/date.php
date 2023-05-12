@@ -14,7 +14,7 @@ function carbon(string $parseString = '', string $tz = null): Carbon
 /**
  * Return a formatted Carbon date.
  */
-function humanize_date(Carbon $date, string $format = null): string
+function humanize_date($date = null, string $format = null): string
 {
     if (App::getLocale() == 'fa') {
         if ($format)
