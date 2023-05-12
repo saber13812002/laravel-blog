@@ -7,7 +7,7 @@
       </p>
 
       <p class="card-text">
-          <small class="text-muted">{{ humanize_date($comment->post->posted_at) }}</small><br>
+          <small class="text-muted">{{ humanize_date($comment->post?$comment->post->posted_at:"") }}</small><br>
     </p>
   </div>
 </div>
