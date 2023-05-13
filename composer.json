@@ -29,7 +29,8 @@
         "spatie/laravel-medialibrary": "^9.7",
         "saber13812002/telegram-bale-bot-php": "^101.1",
         "tio/laravel": "^1.23",
-        "ext-http": "*"
+        "ext-http": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "filp/whoops": "^2.7.3",
