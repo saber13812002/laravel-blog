@@ -91,6 +91,7 @@ uncomment:
  - zip
  - mysqli
  - openssl
+   extension=intl
 
 add this:
  - php_pdo_mysql.dll
