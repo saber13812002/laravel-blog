@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\BotHelper;
+use App\Helpers\MessengerHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostsRequest;
 use App\Models\MediaLibrary;
+use App\Models\Messenger;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -53,6 +56,8 @@ class PostController extends Controller
     {
         $post = Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
+        MessengerHelper::send($request['content'], $request['author_id'], 'bale');
+
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
     }
 
@@ -63,13 +68,15 @@ class PostController extends Controller
     {
         $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
+        MessengerHelper::send($request['content'], $request['author_id'], 'bale');
+
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.updated'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post  $post)
+    public function destroy(Post $post)
     {
         $post->delete();
 
