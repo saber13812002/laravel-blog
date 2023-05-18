@@ -28,16 +28,20 @@ class BotHelper
 
     public static function sendMessage($message, $bot_token, $channel_chat_id, $type = 'telegram'): void
     {
-        $bot = new Telegram($bot_token, $type);
-        self::sendMessageByChatId($bot, $channel_chat_id, $message);
+        if ($type != "eitaa") {
+            $bot = new Telegram($bot_token, $type);
+            self::sendMessageByChatId($bot, $channel_chat_id, $message);
+        } else {
+            self::sendMessageEitaa($message, $bot_token, $channel_chat_id);
+        }
     }
 
-    public static function sendMessageEitaa($message, $bot_token, $channel_chat_id): void
+    private static function sendMessageEitaa($message, $bot_token, $channel_chat_id): void
     {
         self::call_eitaa_api($bot_token, $channel_chat_id, Str::substr($message, 0, 80) . '...', $message);
     }
 
-    public static function call_eitaa_api($bot_token, $chat_id, $title, $text): void
+    private static function call_eitaa_api($bot_token, $chat_id, $title, $text): void
     {
         // initialise the curl request
         $request = curl_init('https://eitaayar.ir/api/' . $bot_token . '/sendMessage');

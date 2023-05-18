@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Jobs\MessengerSenderJob;
 use App\Models\Messenger;
 
 class MessengerHelper
@@ -13,15 +14,15 @@ class MessengerHelper
 
         if ($messenger) {
             if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
-                BotHelper::sendMessage($message, $messenger->bale_bot_token, $messenger->bale_channel_chat_id, 'bale');
+                MessengerSenderJob::dispatch(strip_tags(htmlentities($message)), $messenger, 'bale');
             }
 
             if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id) {
-                BotHelper::sendMessage(strip_tags($message), $messenger->telegram_bot_token, $messenger->telegram_channel_chat_id, 'telegram');
+                MessengerSenderJob::dispatch(strip_tags(htmlentities($message)), $messenger, 'telegram');
             }
 
             if ($messenger->eitaa_bot_token && $messenger->eitaa_channel_chat_id) {
-                BotHelper::sendMessageEitaa(strip_tags($message), $messenger->eitaa_bot_token, $messenger->eitaa_channel_chat_id, 'eitaa');
+                MessengerSenderJob::dispatch(strip_tags(htmlentities($message)), $messenger, 'eitaa');
             }
         }
     }
