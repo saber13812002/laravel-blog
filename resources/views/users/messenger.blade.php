@@ -32,6 +32,19 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                {!! Form::label('bale_channel_invite_link', __('users.attributes.bale_channel_invite_link'), ['class' => 'col-sm-2 col-form-label']) !!}
+
+                <div class="col-sm-5">
+                    {!! Form::text('bale_channel_invite_link', null, ['class' => 'form-control' . ($errors->has('bale_channel_invite_link') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.bale_channel_invite_link')]) !!}
+
+                    @error('bale_channel_invite_link')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+
 
             <div class="form-group row">
                 {!! Form::label('telegram_bot_token', __('users.attributes.telegram_bot_token'), ['class' => 'col-sm-2 col-form-label']) !!}
@@ -52,6 +65,18 @@
                     {!! Form::text('telegram_channel_chat_id', null, ['class' => 'form-control' . ($errors->has('telegram_channel_chat_id') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.telegram_channel_chat_id')]) !!}
 
                     @error('telegram_channel_chat_id')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {!! Form::label('telegram_channel_invite_link', __('users.attributes.telegram_channel_invite_link'), ['class' => 'col-sm-2 col-form-label']) !!}
+
+                <div class="col-sm-5">
+                    {!! Form::text('telegram_channel_invite_link', null, ['class' => 'form-control' . ($errors->has('telegram_channel_invite_link') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.telegram_channel_invite_link')]) !!}
+
+                    @error('telegram_channel_invite_link')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
