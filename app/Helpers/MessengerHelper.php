@@ -13,17 +13,20 @@ class MessengerHelper
         $messenger = Messenger::whereUserId($author_id)->get()->first();
 
         if ($messenger) {
+            $messageEitaa = str_replace(['<p>', '</p>'], '', $message);
+            $messageTelegram = str_replace(['<br>'], '\n\r', $messageEitaa);
+
             if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
-                MessengerSenderJob::dispatch(str_replace(['<p>', '</p>'], '', $message), $messenger, 'bale');
+                MessengerSenderJob::dispatch($messageTelegram, $messenger, 'bale');
                 //strip_tags(htmlentities($message))
             }
 
             if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id) {
-                MessengerSenderJob::dispatch(str_replace(['<p>', '</p>'], '', $message), $messenger, 'telegram');
+                MessengerSenderJob::dispatch($messageTelegram, $messenger, 'telegram');
             }
 
             if ($messenger->eitaa_bot_token && $messenger->eitaa_channel_chat_id) {
-                MessengerSenderJob::dispatch(str_replace(['<p>', '</p>'], '', $message), $messenger, 'eitaa');
+                MessengerSenderJob::dispatch($messageEitaa, $messenger, 'eitaa');
             }
         }
     }
