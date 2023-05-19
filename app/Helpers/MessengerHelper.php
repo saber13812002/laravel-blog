@@ -14,11 +14,10 @@ class MessengerHelper
 
         if ($messenger) {
             $messageEitaa = str_replace(['<p>', '</p>'], '', $message);
-            $messageTelegram = str_replace(['<br>'], '\n\r', $messageEitaa);
+            $messageTelegram = nl2br(str_replace(['<br>'], '\n\r', $messageEitaa), false);
 
             if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
                 MessengerSenderJob::dispatch($messageTelegram, $messenger, 'bale');
-                //strip_tags(htmlentities($message))
             }
 
             if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id) {
