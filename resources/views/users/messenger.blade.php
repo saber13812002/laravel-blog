@@ -81,6 +81,32 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="form-group row">
+                {!! Form::label('eitaa_channel_invite_link', __('users.attributes.eitaa_channel_invite_link'), ['class' => 'col-sm-2 col-form-label']) !!}
+
+                <div class="col-sm-5">
+                    {!! Form::text('eitaa_channel_invite_link', null, ['class' => 'form-control' . ($errors->has('eitaa_channel_invite_link') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.eitaa_channel_invite_link')]) !!}
+
+                    @error('eitaa_channel_invite_link')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {!! Form::label('test_content', __('users.attributes.test_content'), ['class' => 'col-sm-2 col-form-label']) !!}
+
+                <div class="col-sm-5">
+                    {!! Form::text('test_content', null, ['class' => 'form-control' . ($errors->has('test_content') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.test_content')]) !!}
+
+                    @error('test_content')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+
             <div class="form-group offset-sm-2">
                 {!! Form::submit(__('forms.actions.save'), ['class' => 'btn btn-success']) !!}
             </div>
