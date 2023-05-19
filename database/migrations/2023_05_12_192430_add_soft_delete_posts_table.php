@@ -28,7 +28,6 @@ class AddSoftDeletePostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->dropSoftDeletes();
-
         });
     }
 }
