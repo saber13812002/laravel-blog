@@ -38,6 +38,11 @@ class MessengerSenderJob implements ShouldQueue
      */
     public function handle()
     {
-        BotHelper::sendMessage($this->message, $this->messenger->bale_bot_token, $this->messenger->bale_channel_chat_id, $this->type);
+        if ($this->type == 'bale')
+            BotHelper::sendMessage($this->message, $this->messenger->bale_bot_token, $this->messenger->bale_channel_chat_id, $this->type);
+        if ($this->type == 'telegram')
+            BotHelper::sendMessage($this->message, $this->messenger->telegram_bot_token, $this->messenger->telegram_channel_chat_id, $this->type);
+        if ($this->type == 'eitaa')
+            BotHelper::sendMessage($this->message, $this->messenger->eitaa_bot_token, $this->messenger->eitaa_channel_chat_id, $this->type);
     }
 }

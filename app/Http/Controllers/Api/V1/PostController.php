@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
-        MessengerHelper::send($request['content'], $request['author_id'], 'bale');
+        MessengerHelper::send($request['content'], $request['author_id']);
 
         $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
@@ -46,7 +46,7 @@ class PostController extends Controller
     {
         $this->authorize('store', Post::class);
 
-        MessengerHelper::send($request['content'], $request['author_id'], 'bale');
+        MessengerHelper::send($request['content'], $request['author_id']);
 
         return new PostResource(
             Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']))

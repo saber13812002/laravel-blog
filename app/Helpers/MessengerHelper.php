@@ -8,7 +8,7 @@ use App\Models\Messenger;
 class MessengerHelper
 {
 
-    public static function send($message, $author_id, $type)
+    public static function send($message, $author_id)
     {
         $messenger = Messenger::whereUserId($author_id)->get()->first();
 
