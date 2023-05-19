@@ -108,6 +108,8 @@ extension=exif
  - env file. those key in .env.example that comment
  - php artisan migrate
  - php artisan storage:link
+ - php artisan queue:work
+ - php artisan schedule:run
  - php artisan serve
 
 ### 3- test:
@@ -117,6 +119,11 @@ extension=exif
  - goto dashboard
  - upload image
  - create post with this image
+
+### cpanel server:
+
+cd /home/pardisa2/bots && /usr/local/bin/php artisan schedule:run >> /dev/null 2>&1
+cd /home/pardisa2/blog && /usr/local/bin/php artisan queue:work >> /dev/null 2>&1
 
 ## Before starting
 You need to run the migrations with the seeds :
