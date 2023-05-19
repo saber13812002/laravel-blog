@@ -57,6 +57,7 @@ class BotHelper
                 'chat_id' => $chat_id,
                 'title' => $title,
                 'pin' => 1,
+                'parse_mode' => 'html',
                 'text' => $text,
                 'date' => time() + 1,
                 // send next 30 second
