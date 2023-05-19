@@ -14,15 +14,16 @@ class MessengerHelper
 
         if ($messenger) {
             if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
-                MessengerSenderJob::dispatch(strip_tags(htmlentities($message)), $messenger, 'bale');
+                MessengerSenderJob::dispatch($message, $messenger, 'bale');
+                //strip_tags(htmlentities($message))
             }
 
             if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id) {
-                MessengerSenderJob::dispatch(strip_tags(htmlentities($message)), $messenger, 'telegram');
+                MessengerSenderJob::dispatch($message, $messenger, 'telegram');
             }
 
             if ($messenger->eitaa_bot_token && $messenger->eitaa_channel_chat_id) {
-                MessengerSenderJob::dispatch(strip_tags(htmlentities($message)), $messenger, 'eitaa');
+                MessengerSenderJob::dispatch($message, $messenger, 'eitaa');
             }
         }
     }

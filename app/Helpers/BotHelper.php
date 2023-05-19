@@ -20,7 +20,8 @@ class BotHelper
 
         $content = [
             'chat_id' => $chat_id,
-            'text' => $message
+            'text' => $message,
+            'parse_mode' => 'HTML'
         ];
 
         $messenger->sendMessage($content);
@@ -82,8 +83,9 @@ class BotHelper
     {
         $content = [
             'chat_id' => $chat_id,
-            'text' => $message
-        ];
+            'text' => $message,
+            'parse_mode' => 'HTML'
+        ]; // , 'parse_mode' => 'HTML');
 
         $messenger->sendMessage($content);
     }
