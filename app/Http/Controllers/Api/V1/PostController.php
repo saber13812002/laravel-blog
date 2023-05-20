@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
 
-        MessengerHelper::send($request['content'], $request['author_id']);
+//        MessengerHelper::send($request['content'], $request['author_id']);
 
         $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 

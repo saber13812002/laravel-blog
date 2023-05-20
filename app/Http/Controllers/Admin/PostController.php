@@ -68,7 +68,7 @@ class PostController extends Controller
     {
         $post->update($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
-        MessengerHelper::send($request['content'], $request['author_id']);
+//        MessengerHelper::send($request['content'], $request['author_id']);
 
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.updated'));
     }
