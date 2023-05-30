@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Telegram;
 
@@ -29,6 +31,7 @@ class BotHelper
 
     public static function sendMessage($message, $bot_token, $channel_chat_id, $type = 'telegram'): void
     {
+        Log::info("bothelper:" . $message . " : " . $bot_token . " : " . $channel_chat_id . " : " . $type . " : " . Carbon::now()->toDateTimeString());
         if ($type != "eitaa") {
             $bot = new Telegram($bot_token, $type);
             self::sendMessageByChatId($bot, $channel_chat_id, $message);

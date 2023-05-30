@@ -3,11 +3,13 @@
 namespace App\Jobs;
 
 use App\Helpers\BotHelper;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class MessengerSenderJob implements ShouldQueue
 {
@@ -38,6 +40,8 @@ class MessengerSenderJob implements ShouldQueue
      */
     public function handle()
     {
+        Log::info("MessageSenderJob:" . $this->message . " : " . $this->messenger->bale_bot_token . " : " . $this->messenger->bale_channel_chat_id . " : " . $this->type . " : " . Carbon::now()->toDateTimeString());
+
         if ($this->type == 'bale')
             BotHelper::sendMessage($this->message, $this->messenger->bale_bot_token, $this->messenger->bale_channel_chat_id, $this->type);
         if ($this->type == 'telegram')
