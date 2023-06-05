@@ -27,12 +27,22 @@ return [
 
         'bale_channel_chat_id' => "شناسه گروه یا کانال بله",
         'bale_bot_token' => "توکن روبات پیام رسان بله",
+        'bale_channel_invite_link' => "لینک دعوت کانال در پیام رسان بله",
+        'bale_admin_chat_id' => "توکن ادمین در پیام رسان بله",
 
         'telegram_bot_token' => "توکن روبات پیام رسان تلگرام",
         'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
+        'telegram_channel_invite_link' => "لینک دعوت گروه یا کانال تلگرام",
+        'telegram_admin_chat_id' => "شناسه ادمین گروه یا کانال تلگرام",
 
         'eitaa_channel_chat_id' => "شناسه گروه یا کانال ایتا",
-        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا"
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا",
+        'eitaa_channel_invite_link' => "لینک دعوت به کانال یا گروه پیام رسان ایتا",
+        'eitaa_admin_chat_id' => "شناسه ادمین کانال یا گروه در پیام رسان ایتا",
+
+
+
+        'qrtwertwerterwwer' => "awrtwertwerwwrt"
     ],
 
     'placeholder' => [
@@ -44,12 +54,21 @@ return [
 
         'bale_channel_chat_id' => "شناسه گروه یا کانال بله",
         'bale_bot_token' => "توکن روبات پیام رسان بله",
+        'bale_channel_invite_link' => "لینک دعوت کانال در پیام رسان بله",
+        'bale_admin_chat_id' => "توکن روبات پیام رسان بله",
 
         'telegram_bot_token' => "توکن روبات پیام رسان تلگرام",
         'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
+        'telegram_channel_invite_link' => "لینک دعوت به گروه یا کانال تلگرام",
+        'telegram_admin_chat_id' => "شناسه ادمین گروه یا کانال تلگرام",
 
         'eitaa_channel_chat_id' => "شناسه گروه یا کانال ایتا",
-        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا"
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا",
+        'eitaa_channel_invite_link' => "توکن روبات پیام رسان ایتا",
+        'eitaa_admin_chat_id' => "شناسه ادمین در کانال یا گروه در پیام رسان ایتا",
 
+
+
+        'qrtwertwertwer' => "awrtwertwrt"
     ]
 ];

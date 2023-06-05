@@ -41,12 +41,20 @@ return [
 
         'bale_channel_chat_id' => "شناسه گروه یا کانال بله",
         'bale_bot_token' => "توکن روبات پیام رسان بله",
+        'bale_bot_token' => "توکن روبات پیام رسان بله",
+        'bale_bot_token' => "توکن روبات پیام رسان بله",
 
         'telegram_bot_token' => "توکن روبات پیام رسان تلگرام",
         'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
+        'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
+        'telegram_channel_chat_id' => "شناسه گروه یا کانال تلگرام",
 
         'eitaa_channel_chat_id' => "شناسه گروه یا کانال ایتا",
-        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا"
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا",
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا",
+        'eitaa_bot_token' => "توکن روبات پیام رسان ایتا",
+
+    'qrtwertwertsdfsdfwer' => "awrtwersdfsdftwrt"
 
     ],
 ];

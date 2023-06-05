@@ -44,6 +44,18 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                {!! Form::label('bale_admin_chat_id', __('users.attributes.bale_admin_chat_id'), ['class' => 'col-sm-2 col-form-label']) !!}
+
+                <div class="col-sm-5">
+                    {!! Form::text('bale_admin_chat_id', null, ['class' => 'form-control' . ($errors->has('bale_admin_chat_id') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.bale_admin_chat_id')]) !!}
+
+                    @error('bale_admin_chat_id')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
 
 
             <div class="form-group row">
@@ -77,6 +89,18 @@
                     {!! Form::text('telegram_channel_invite_link', null, ['class' => 'form-control' . ($errors->has('telegram_channel_invite_link') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.telegram_channel_invite_link')]) !!}
 
                     @error('telegram_channel_invite_link')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {!! Form::label('telegram_admin_chat_id', __('users.attributes.telegram_admin_chat_id'), ['class' => 'col-sm-2 col-form-label']) !!}
+
+                <div class="col-sm-5">
+                    {!! Form::text('telegram_admin_chat_id', null, ['class' => 'form-control' . ($errors->has('telegram_admin_chat_id') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.telegram_admin_chat_id')]) !!}
+
+                    @error('telegram_admin_chat_id')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
@@ -118,6 +142,18 @@
                     @enderror
                 </div>
             </div>
+
+{{--            <div class="form-group row">--}}
+{{--                {!! Form::label('eitaa_admin_chat_id', __('users.attributes.eitaa_admin_chat_id'), ['class' => 'col-sm-2 col-form-label']) !!}--}}
+
+{{--                <div class="col-sm-5">--}}
+{{--                    {!! Form::text('eitaa_admin_chat_id', null, ['class' => 'form-control' . ($errors->has('eitaa_admin_chat_id') ? ' is-invalid' : ''), 'placeholder' => __('users.placeholder.eitaa_admin_chat_id')]) !!}--}}
+
+{{--                    @error('eitaa_channel_invite_link')--}}
+{{--                    <span class="invalid-feedback">{{ $message }}</span>--}}
+{{--                    @enderror--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="form-group row">
                 {!! Form::label('test_content', __('users.attributes.test_content'), ['class' => 'col-sm-2 col-form-label']) !!}

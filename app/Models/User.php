@@ -161,14 +161,17 @@ class User extends Authenticatable implements MustVerifyEmail
         $messenger->bale_bot_token = $request->bale_bot_token;
         $messenger->bale_channel_chat_id = $request->bale_channel_chat_id;
         $messenger->bale_channel_invite_link = $request->bale_channel_invite_link;
+        $messenger->bale_admin_chat_id = $request->bale_admin_chat_id;
 
         $messenger->telegram_bot_token = $request->telegram_bot_token;
         $messenger->telegram_channel_chat_id = $request->telegram_channel_chat_id;
         $messenger->telegram_channel_invite_link = $request->telegram_channel_invite_link;
+        $messenger->telegram_admin_chat_id = $request->telegram_admin_chat_id;
 
         $messenger->eitaa_bot_token = $request->eitaa_bot_token;
         $messenger->eitaa_channel_chat_id = $request->eitaa_channel_chat_id;
         $messenger->eitaa_channel_invite_link = $request->eitaa_channel_invite_link;
+//        $messenger->eitaa_admin_chat_id = $request->eitaa_admin_chat_id;
 
 
         $messenger->save();
