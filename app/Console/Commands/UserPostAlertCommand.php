@@ -44,6 +44,7 @@ class UserPostAlertCommand extends Command
         $users = User::get();
 //        dd($users);
         foreach ($users as $user) {
+//            dd($user->id,$user->name);
             $lastPost = $user->posts()->latest()->limit(1)->first();
             if ($lastPost && $lastPost->count() > 0) {
 //            dd($lastPost->created_at);
