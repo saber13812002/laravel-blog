@@ -65,7 +65,7 @@ class UserPostAlertCommand extends Command
 
 //                dd($user->messenger->bale_bot_token);
                     if ($user->messenger && $user->messenger->bale_admin_chat_id) {
-                        BotHelper::sendMessage($message, $user->messenger->bale_bot_token, $user->messenger->bale_channel_chat_id, 'bale');
+                        BotHelper::sendMessage($message, $user->messenger->bale_bot_token, $user->messenger->bale_admin_chat_id, 'bale');
                         BotHelper::sendMessageToSuperAdmin($message . $user->name, 'bale');
                     }
 
