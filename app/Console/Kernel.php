@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
         $schedule->command('telescope:prune')->daily()->at('03:00');
-        $schedule->command(UserPostAlertCommand::class)->dailyAt("14:29"); //17:59 iran
+        $schedule->command(UserPostAlertCommand::class)->tuesdays("14:29"); //17:59 iran
     }
 
     /**
