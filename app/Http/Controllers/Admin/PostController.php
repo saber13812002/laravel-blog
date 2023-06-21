@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\BotHelper;
 use App\Helpers\MessengerHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostsRequest;
 use App\Models\MediaLibrary;
-use App\Models\Messenger;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -57,6 +56,7 @@ class PostController extends Controller
         $post = Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']));
 
         MessengerHelper::send($request['content'], $request['author_id']);
+        Artisan::call('queue:work');
 
         return redirect()->route('admin.posts.edit', $post)->withSuccess(__('posts.created'));
     }

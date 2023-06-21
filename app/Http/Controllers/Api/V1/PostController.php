@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Helpers\BotHelper;
 use App\Helpers\MessengerHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostsRequest;
 use App\Http\Resources\Post as PostResource;
-use App\Models\Messenger;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Artisan;
 
 class PostController extends Controller
 {
@@ -47,6 +46,7 @@ class PostController extends Controller
         $this->authorize('store', Post::class);
 
         MessengerHelper::send($request['content'], $request['author_id']);
+        Artisan::call('queue:work');
 
         return new PostResource(
             Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']))

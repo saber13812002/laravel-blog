@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\MessengerHelper;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 
 class UserMessengerController extends Controller
@@ -34,6 +35,7 @@ class UserMessengerController extends Controller
 
         if ($request['test_content'])
             MessengerHelper::send($request['test_content'], $user->id);
+        Artisan::call('queue:work');
 
         return redirect()->route('users.messenger')->withSuccess(__('users.updated'));
     }

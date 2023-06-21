@@ -33,7 +33,6 @@ class MessengerHelper
                     ->delay(now()->addSecond(4));
             }
 
-            Artisan::call('queue:work');
         }
     }
 }
