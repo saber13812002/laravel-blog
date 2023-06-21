@@ -21,7 +21,7 @@ Route::prefix('v1')->namespace('Api\V1')->group(function () {
 
         // Posts
         Route::apiResource('posts', 'PostController')->only(['update', 'store', 'destroy']);
-        Route::post('/artisan', 'PostLikeController@artisan')->name('posts.artisan');
+        Route::post('/artisan', 'PostController@artisan')->name('posts.artisan');
         Route::post('/posts/{post}/likes', 'PostLikeController@store')->name('posts.likes.store');
         Route::delete('/posts/{post}/likes', 'PostLikeController@destroy')->name('posts.likes.destroy');
 
