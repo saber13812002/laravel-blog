@@ -46,7 +46,7 @@ class PostController extends Controller
         $this->authorize('store', Post::class);
 
         MessengerHelper::send($request['content'], $request['author_id']);
-        Artisan::call('queue:work');
+//        Artisan::call('queue:work');
 
         return new PostResource(
             Post::create($request->only(['title', 'content', 'posted_at', 'author_id', 'thumbnail_id']))
