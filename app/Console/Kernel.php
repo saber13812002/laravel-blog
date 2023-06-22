@@ -29,6 +29,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:run')->daily()->at('02:00');
         $schedule->command('telescope:prune')->daily()->at('03:00');
         $schedule->command(UserPostAlertCommand::class)->tuesdays("14:29"); //17:59 iran
+        $schedule->command('queue:work --stop-when-empty')->everyMinute()->withoutOverlapping();
+
     }
 
     /**
