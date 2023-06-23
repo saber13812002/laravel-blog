@@ -56,11 +56,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function artisan(PostsRequest $request): Response
+    public function artisan(): Response
     {
         $this->authorize('store', Post::class);
 
-        Artisan::call('queue:work');
+        Artisan::call('queue:work --once --stop-when-empty');
 
         return new Response(null,200);
     }
