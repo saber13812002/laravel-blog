@@ -62,7 +62,7 @@ class PostController extends Controller
 
         Artisan::call('queue:work --once --stop-when-empty');
 
-        return new Response(null,200);
+        return new Response(null, 200);
     }
 
     /**
