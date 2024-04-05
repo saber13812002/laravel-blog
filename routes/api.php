@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\V1\UserMessengerController;
+use App\Http\Controllers\Api\V1\PostLikeController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +24,12 @@ Route::prefix('v1')->namespace('Api\V1')->group(function () {
 
         // Posts
         Route::apiResource('posts', 'PostController')->only(['update', 'store', 'destroy']);
-        Route::post('artisan', 'PostController@artisan')->name('posts.artisan');
-        Route::post('/posts/{post}/likes', 'PostLikeController@store')->name('posts.likes.store');
+        //        Route::post('artisan', 'PostController@artisan')->name('posts.artisan');
+        Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes.store');
         Route::delete('/posts/{post}/likes', 'PostLikeController@destroy')->name('posts.likes.destroy');
+
+        // Messengers Config
+        Route::get('messenger/{userId}', [UserMessengerController::class, 'get'])->name('user.messenger.get');
 
         // Users
         Route::apiResource('users', 'UserController')->only('update');
@@ -49,3 +55,6 @@ Route::prefix('v1')->namespace('Api\V1')->group(function () {
     // Media
     Route::apiResource('media', 'MediaController')->only('index');
 });
+
+
+Route::get('job', [JobController::class, 'handle']);

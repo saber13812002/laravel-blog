@@ -49,4 +49,42 @@ class MessengerSenderJob implements ShouldQueue
         if ($this->type == 'eitaa')
             BotHelper::sendMessage($this->message, $this->messenger->eitaa_bot_token, $this->messenger->eitaa_channel_chat_id, $this->type);
     }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    public function getToken(): string
+    {
+
+        if ($this->type == 'bale')
+            return $this->messenger->bale_bot_token;
+
+        if ($this->type == 'telegram')
+            return $this->messenger->telegram_bot_token;
+
+        // if ($this->type == 'eitaa')
+        return $this->messenger->eitaa_bot_token;
+    }
+    
+
+    public function getTargetChatId(): string
+    {
+
+        if ($this->type == 'bale')
+            return $this->messenger->bale_channel_chat_id;
+
+        if ($this->type == 'telegram')
+            return $this->messenger->telegram_channel_chat_id;
+
+        // if ($this->type == 'eitaa')
+        return $this->messenger->eitaa_channel_chat_id;
+    }
+
 }

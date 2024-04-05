@@ -40,6 +40,29 @@ class BotHelper
         }
     }
 
+    public static function sendMessageWithJob($messengerSenderJob)
+    {
+        $date = $messengerSenderJob->delay;
+
+        // if (self::greaterThanOrEqualToNow($date)) {
+            $type = $messengerSenderJob->getType();
+            $message = $messengerSenderJob->getMessage();
+            $token = $messengerSenderJob->getToken();
+            $target_chat_id = $messengerSenderJob->getTargetChatId();
+
+            self::sendMessage($message, $token, $target_chat_id, $type);
+        // }
+    }
+
+    public static function greaterThanOrEqualToNow($date): bool
+    {
+        $datetime = Carbon::now();
+        if ($datetime->greaterThanOrEqualTo(Carbon::now())) {
+            return true;
+        }
+        return false;
+    }
+
     private static function sendMessageEitaa($message, $bot_token, $channel_chat_id): void
     {
         self::call_eitaa_api($bot_token, $channel_chat_id, Str::substr($message, 0, 80) . '...', $message);
