@@ -58,3 +58,5 @@ Route::prefix('v1')->namespace('Api\V1')->group(function () {
 
 
 Route::get('job', [JobController::class, 'handle']);
+
+Route::get('daily', [JobController::class, 'daily']);
