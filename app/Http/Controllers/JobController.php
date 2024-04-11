@@ -37,5 +37,7 @@ class JobController extends Controller
 
 
         UserAlertHelper::handle();
+
+        return 1;
     }
 }
