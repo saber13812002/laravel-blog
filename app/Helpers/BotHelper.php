@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Messenger;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -45,12 +46,12 @@ class BotHelper
         $date = $messengerSenderJob->delay;
 
         // if (self::greaterThanOrEqualToNow($date)) {
-            $type = $messengerSenderJob->getType();
-            $message = $messengerSenderJob->getMessage();
-            $token = $messengerSenderJob->getToken();
-            $target_chat_id = $messengerSenderJob->getTargetChatId();
+        $type = $messengerSenderJob->getType();
+        $message = $messengerSenderJob->getMessage();
+        $token = $messengerSenderJob->getToken();
+        $target_chat_id = $messengerSenderJob->getTargetChatId();
 
-            self::sendMessage($message, $token, $target_chat_id, $type);
+        self::sendMessage($message, $token, $target_chat_id, $type);
         // }
     }
 
@@ -137,5 +138,27 @@ class BotHelper
     {
         $bot = new Telegram($type == 'bale' ? env('BOT_MOTHER_TOKEN_BALE') : env('BOT_MOTHER_TOKEN_TELEGRAM'), $type);
         BotHelper::sendMessageByChatId($bot, $type == 'bale' ? env('SUPER_ADMIN_CHAT_ID_BALE') : env('SUPER_ADMIN_CHAT_ID_TELEGRAM'), $message);
+    }
+
+    public static function addSignIfConfig(mixed $message, $messenger): string
+    {
+
+        if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
+            $message .= "
+👇👇👇
+بله
+" . $messenger->bale_channel_invite_link;
+        }
+
+        if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id) {
+            $message .= "تلگرام
+" . $messenger->telegram_channel_invite_link;
+        }
+
+        if ($messenger->eitaa_bot_token && $messenger->eitaa_channel_chat_id) {
+            $message .= "ایتا
+" . $messenger->eitaa_channel_invite_link;
+        }
+        return $message;
     }
 }

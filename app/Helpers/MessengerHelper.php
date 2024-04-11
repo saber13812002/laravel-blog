@@ -18,6 +18,9 @@ class MessengerHelper
             $messageTelegram = str_replace('<br>', "
 - ", $messageEitaa);
 
+            $messageEitaa = BotHelper::addSignIfConfig($messageEitaa, $messenger);
+            $messageTelegram = BotHelper::addSignIfConfig($messageTelegram, $messenger);
+
             if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
                 MessengerSenderJob::dispatch($messageTelegram, $messenger, 'bale')
                     ->delay(now()->addSecond(2));
