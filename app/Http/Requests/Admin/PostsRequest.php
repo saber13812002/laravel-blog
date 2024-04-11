@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Models\Post;
 use App\Rules\CanBeAuthor;
 use Carbon\Carbon;
+use http\Client\Request;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 
 class PostsRequest extends FormRequest
 {
@@ -25,7 +26,7 @@ class PostsRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'slug' => Str::slug($this->input('title'))
+            'slug' => $this->slug($this->input('title'))
         ]);
 
         $this->merge([
@@ -47,4 +48,38 @@ class PostsRequest extends FormRequest
             'slug' => 'unique:posts,slug,' . (optional($this->post)->id ?: 'NULL'),
         ];
     }
+
+    public function slug($string, $separator = '-') {
+        if (is_null($string)) {
+            return "";
+        }
+
+        $string = trim($string);
+
+        $string = mb_strtolower($string, "UTF-8");;
+
+        $string = preg_replace("/[^a-z0-9_\sءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/", "", $string);
+
+        $string = preg_replace("/[\s-]+/", " ", $string);
+
+        $string = preg_replace("/[\s_]/", $separator, $string);
+
+        return $string;
+    }
+    public function store(Request $request)
+    {
+        $this->validate((array)$request, array(
+            'title'         => 'required|max:255',
+            'slug'          => 'required|min:3|max:255|unique:posts',
+            'body'          => 'required',
+        ));
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->slug = $this->slug($request->slug);
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('admin/posts')->with('success', 'post is successfully saved');
+    }
+
 }
