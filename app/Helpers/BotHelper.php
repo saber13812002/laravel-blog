@@ -143,20 +143,22 @@ class BotHelper
     public static function addSignIfConfig(mixed $message, $messenger): string
     {
 
-        if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id) {
+        if ($messenger->bale_bot_token && $messenger->bale_channel_chat_id && $messenger->bale_channel_invite_link) {
             $message .= "
 👇👇👇
 بله
 " . $messenger->bale_channel_invite_link;
         }
 
-        if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id) {
-            $message .= "تلگرام
+        if ($messenger->telegram_bot_token && $messenger->telegram_channel_chat_id && $messenger->telegram_channel_invite_link) {
+            $message .= "
+تلگرام
 " . $messenger->telegram_channel_invite_link;
         }
 
-        if ($messenger->eitaa_bot_token && $messenger->eitaa_channel_chat_id) {
-            $message .= "ایتا
+        if ($messenger->eitaa_bot_token && $messenger->eitaa_channel_chat_id && $messenger->eitaa_channel_invite_link) {
+            $message .= "
+ایتا
 " . $messenger->eitaa_channel_invite_link;
         }
         return $message;
