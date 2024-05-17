@@ -31,6 +31,9 @@ class Kernel extends ConsoleKernel
         $schedule->command(UserPostAlertCommand::class)->tuesdays("14:29"); //17:59 iran
         $schedule->command('queue:work --stop-when-empty')->everyMinute()->withoutOverlapping();
 
+        $schedule->command('app:userpostalert')->dailyAt("6:30"); //10:00 iran
+
+
     }
 
     /**
@@ -40,7 +43,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
