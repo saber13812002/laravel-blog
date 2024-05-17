@@ -84,7 +84,7 @@ class BotHelper
                 // 'file' => new \CurlFile(realpath('C:/Users/eitaa/Desktop/eitaa.apk')),
                 'chat_id' => $chat_id,
                 'title' => $title,
-                'pin' => 1,
+                'pin' => 0,
                 'parse_mode' => 'html',
                 'text' => $text,
                 'date' => time() + 1,
